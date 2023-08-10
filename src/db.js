@@ -6,7 +6,14 @@ export const getDB = async () => {
   return JSON.parse(dbData);
 };
 
-export const saveDB = async (dbData) => {
-  await fs.writeFile(DB_PATH, JSON.stringify(dbData, null, 2));
+export const saveDB = async (saveData) => {
+  await fs.writeFile(DB_PATH, JSON.stringify(saveData, null, 2));
   return dbData;
+};
+
+export const insertDB = async (newData) => {
+  const dbData = await getDB();
+  dbData.notes.push(newData);
+  await saveDB(dbData);
+  return newData;
 };
