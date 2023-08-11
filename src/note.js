@@ -15,3 +15,10 @@ export const getAllNotes = async () => {
   const { notes } = await getDB();
   return notes;
 };
+
+export const findNotes = async (keyword) => {
+  const { notes } = await getDB();
+  return notes.filter((note) =>
+    note.content.toLowerCase().imcludes(keyword.toLowerCase())
+  );
+};
