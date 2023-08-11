@@ -22,3 +22,14 @@ export const findNotes = async (keyword) => {
     note.content.toLowerCase().imcludes(keyword.toLowerCase())
   );
 };
+
+export const removeNote = async (id) => {
+  const { notes } = await getDB();
+  const match = notes.find((note) => note.id === id);
+
+  if (match) {
+    const newNotes = notes.filter((note) => note.id !== id);
+    await saveDB({ notes: newNotes });
+    return id;
+  }
+};
