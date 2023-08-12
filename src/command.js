@@ -6,7 +6,7 @@ import {
   findNotes,
   removeNote,
   removeAllNotes,
-} from "./notes.js";
+} from "./note.js";
 import { listNotes } from "./utils.js";
 import { start } from "./server.js";
 
