@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
-const DB_PATH = new URL("../db.json", import.meta.url).pathname;
-
+const DB_PATH = new URL("../db.json", import.meta.url).pathname.slice(1);
 export const getDB = async () => {
   const dbData = await fs.readFile(DB_PATH, "utf-8");
   return JSON.parse(dbData);
