@@ -6,16 +6,9 @@ import {
   findNotes,
   removeNote,
   removeAllNotes,
-} from "./note.js";
-
-const listNotes = (notes) => {
-  notes.forEach((note) => {
-    console.log("\n");
-    console.log("id: ", note.id);
-    console.log("tags: ", note.tags.join(", ")),
-      console.log("note: ", note.content);
-  });
-};
+} from "./notes.js";
+import { listNotes } from "./utils.js";
+import { start } from "./server.js";
 
 yargs(hideBin(process.argv))
   .command(
@@ -90,7 +83,10 @@ yargs(hideBin(process.argv))
         type: "number",
       });
     },
-    async (argv) => {}
+    async (argv) => {
+      const notes = await getAllNotes();
+      start(notes, argv.port);
+    }
   )
   .command(
     "clean",
