@@ -33,3 +33,11 @@ const createServer = (notes) => {
     res.end(html);
   });
 };
+
+export const start = (notes, port) => {
+  const server = createServer(notes);
+  server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+  });
+  open(`http://localhost:${port}`);
+};
