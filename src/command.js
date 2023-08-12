@@ -6,7 +6,7 @@ import {
   findNotes,
   removeNote,
   removeAllNotes,
-} from "./notes.js";
+} from "./note.js";
 
 const listNotes = (notes) => {
   notes.forEach((note) => {
